@@ -6,10 +6,12 @@ var 상태 = {};
 // var 시작시간 = performance.now();
 //예약어는 변수명으로는 못 쓴다.
 //호출 스택으로 문제가 생길경우 변수를 이런식으로 빼면 됀다.
+//Maximum call stack exceeded 에러
 var 시작시간;
 var 끝시간;
 var 기록 = [];
 var 타임아웃;
+
 스크린.addEventListener("click", function () {
   //console.timeEnd("끝시간");
   //console.log("시간" + (끝시간 - 시작시간) / 1000);
