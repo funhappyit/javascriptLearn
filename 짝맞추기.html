@@ -7,9 +7,12 @@
     <title>짝맞추기</title>
     <style>
         .card{
-            width:100px;
-            height:150px;
-            border:1px solid black;
+            display: inline-block;
+            margin-right: 20px;
+            margin-bottom: 20px;
+            width:70px;
+            height:100px;
+            perspective: 140px;
         }
         .card-inner{
             position: relative;
@@ -22,11 +25,19 @@
         .card.flipped .card-inner{
             transform: rotateY(180deg);
         }
+        .card-front{
+            background-color: navy;
+        }
+        .card-back{
+            background: gainsboro;
+        }
+        
         .card-front, .card-back{
             position:absolute;
             width:100%;
             height:100%;
             backface-visibility: hidden;
+            border:1px solid black;
         }
         .card-back{
             transform: rotateY(180deg);
@@ -34,16 +45,6 @@
     </style>
 </head>
 <body>
-    <div class="card">
-        <div class="card-inner">
-            <div class="card-front">
-                앞
-            </div>
-            <div class="card-back">
-                뒤
-            </div>
-        </div>
-    </div>
     <script src="짝맞추기.js"></script>
 </body>
 </html>
