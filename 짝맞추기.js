@@ -1,6 +1,6 @@
 var 가로 = 4;
 var 세로 = 3;
-var 색깔후보 = [
+var 색깔들 = [
   "red",
   "red",
   "orange",
@@ -18,10 +18,15 @@ var 색깔 = [];
 var 클릭플래그 = true;
 var 클릭카드 = [];
 var 완성카드 = [];
-for (var i = 0; 색깔후보.length > 0; i += 1) {
-  색깔 = 색깔.concat(
-    색깔후보.splice(Math.floor(Math.random() * 색깔후보.length), 1)
-  );
+var 성급카드 = [];
+var 시작시간;
+var 색깔후보 = 색깔들.slice();
+function 셔플() {
+  for (var i = 0; 색깔후보.length > 0; i += 1) {
+    색깔 = 색깔.concat(
+      색깔후보.splice(Math.floor(Math.random() * 색깔후보.length), 1)
+    );
+  }
 }
 console.log(색깔);
 
@@ -46,6 +51,7 @@ function 카드세팅(가로, 세로) {
         if (클릭플래그 && !완성카드.includes(c)) {
           c.classList.toggle("flipped");
           클릭카드.push(c);
+          console.log("df" + 클릭플래그);
           if (클릭카드.length === 2) {
             if (
               클릭카드[0].querySelector(".card-back").style.backgroundColor ===
@@ -54,20 +60,37 @@ function 카드세팅(가로, 세로) {
               완성카드.push(클릭카드[0]);
               완성카드.push(클릭카드[1]);
               클릭카드 = [];
+              if (완성카드.length === 12) {
+                var 끝시간 = new Date();
+                alert(
+                  "축하합니다! 성공!!" +
+                    (끝시간 - 시작시간) / 1000 +
+                    "초 걸렸습니다."
+                );
+                document.querySelector("#wrapper").innerHTML = "";
+                색깔후보 = 색깔들.slice();
+                색깔 = [];
+                완성카드 = [];
+                시작시간;
+                셔플();
+                카드세팅(가로, 세로);
+              }
             } else {
               //두 카드의 색깔이 다르면
-              setTimeout(function () {
-                클릭카드[0].classList.remove("flipped");
-                클릭카드[1].classList.remove("flipped");
-                클릭플래그 = true;
-                클릭카드 = [];
-              }, 1000);
+              (function 클로저(클릭카드) {
+                setTimeout(function () {
+                  클릭카드[0].classList.remove("flipped");
+                  클릭카드[1].classList.remove("flipped");
+                }, 1000);
+              })(클릭카드);
+              클릭플래그 = true;
+              클릭카드 = [];
             }
           }
         }
       });
     })(card);
-    document.body.appendChild(card);
+    document.querySelector("#wrapper").appendChild(card);
   }
   //유저가 처음 카드를 외울시간을 준다.
   document.querySelectorAll(".card").forEach(function (card, index) {
@@ -81,7 +104,8 @@ function 카드세팅(가로, 세로) {
       card.classList.remove("flipped");
     });
     클릭플래그 = true;
+    시작시간 = new Date();
   }, 5000);
 }
-
+셔플();
 카드세팅(가로, 세로);
