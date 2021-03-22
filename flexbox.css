@@ -1,0 +1,27 @@
+.container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    grid-auto-rows: minmax(100px, auto);
+    width: 100vw;
+    height: 100vh;
+}
+.item{
+    
+}
+.item1{
+    background: blue;
+
+}
+.item2{
+    background: blueviolet;
+}
+.item3{
+    background: cadetblue;
+}
+.item4{
+    background: coral;
+}
+.item5{
+    background: crimson;
+}

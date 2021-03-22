@@ -84,37 +84,40 @@
     </style>
 </head>
 <body>
-<div id="rival">
-    <div>코스트: <span id="rival-cost">10</span>/<span>10</span></div>
-    <div id="rival-hero"></div>
-    <div id="rival-cards" style="height: 150px">
+    <div id="rival-deck">상대방 덱</div>
+    <div id="rival-hero">
+        <div id="rival-cost">코스트:<span>10</span></div>
+        <div class="card">
+            <div class="card-name">상대방 영웅</div>
+            <div class="card-att">5</div>
+            <div class="card-hp">10</div>
+        </div>
     </div>
-</div>
-<div id="rival-deck">
-    <div>덱</div>
-</div>
-<hr />
-<button id="turn-btn">턴넘기기</button>
-<div id="my" class="turn">
-    <div id="my-cards" style="height: 150px">
-
+    <div id="rival-cards">상대방 카드들
+        <div class="card">
+            <div class="card-cost">2</div>
+            <div class="card-att">5</div>
+            <div class="card-hp">10</div>
+        </div>
     </div>
-    <div id="my-hero">
+    <div id="rival-deck"></div>
+    <hr/>
+    <div id="my-cards">내 카드들
+        <div class="card">
+            <div class="card-cost">2</div>
+            <div class="card-att">5</div>
+            <div class="card-hp">10</div>
+        </div>
     </div>
-    <div>코스트: <span id="my-cost">10</span>/<span>10</span></div>
-</div>
-<div id="my-deck">
-    <div>덱</div>
-</div>
-<div class="card-hidden"> 
-    <div class="card">
-        <div class="card-cost"></div>
-        <div class="card-att"></div>
-        <div class="card-hp"></div>
+    <div id="my-hero"><!--내 영웅-->
+        <div class="card">
+            <div class="card-name">내 영웅</div>
+            <div class="card-att">5</div>
+            <div class="card-hp">10</div>
+        </div>
+        <div id="my-cost">코스트:<span>10</span></div>
     </div>
-</div>
+    <div id="my-deck">내 덱</div>
 <script src="자스스톤.js"></script>
-<div>빨강이 체력, 노랑이 공격력, 적 영웅의 체력이 0이되면 승리!
-영웅을 보호하기 위해 쫄병들을 코스트(파란색) 내에서 뽑을 수 있음</div>
 </body>
 </html>
