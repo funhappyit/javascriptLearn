@@ -84,40 +84,47 @@
     </style>
 </head>
 <body>
-    <div id="rival-deck">상대방 덱</div>
-    <div id="rival-hero">
+    <div id="rival">
         <div id="rival-cost">코스트:<span>10</span></div>
-        <div class="card">
-            <div class="card-name">상대방 영웅</div>
-            <div class="card-att">5</div>
-            <div class="card-hp">10</div>
+        <div id="rival-hero">
+            <div class="card">
+                <div class="card-name">상대방 영웅</div>
+                <div class="card-att">5</div>
+                <div class="card-hp">10</div>
+            </div>
+        </div>
+        <div id="rival-cards" style="height:150px">상대방 카드들
         </div>
     </div>
-    <div id="rival-cards">상대방 카드들
+    <div id="rival-deck">
+        <div>덱</div>
         <div class="card">
             <div class="card-cost">2</div>
             <div class="card-att">5</div>
             <div class="card-hp">10</div>
         </div>
     </div>
-    <div id="rival-deck"></div>
     <hr/>
-    <div id="my-cards">내 카드들
+    <div id="my">
+        <div id="my-cards" style="height: 150px">내 카드들
+        </div>
+        <div id="my-hero"><!--내 영웅-->
+            <div class="card">
+                <div class="card-name">내 영웅</div>
+                <div class="card-att">5</div>
+                <div class="card-hp">10</div>
+            </div>
+            <div id="my-cost">코스트:<span>10</span></div>
+        </div>
+    </div>
+    <div id="my-deck">
+        <div>덱</div>
         <div class="card">
             <div class="card-cost">2</div>
             <div class="card-att">5</div>
             <div class="card-hp">10</div>
         </div>
     </div>
-    <div id="my-hero"><!--내 영웅-->
-        <div class="card">
-            <div class="card-name">내 영웅</div>
-            <div class="card-att">5</div>
-            <div class="card-hp">10</div>
-        </div>
-        <div id="my-cost">코스트:<span>10</span></div>
-    </div>
-    <div id="my-deck">내 덱</div>
 <script src="자스스톤.js"></script>
 </body>
 </html>
