@@ -25,7 +25,7 @@ function 랜덤생성(){
             }
         });
     });
-    console.log(빈칸배열[0]);
+  
     var 랜덤칸 = 빈칸배열[Math.floor(Math.random() * 빈칸배열.length)];
     데이터[랜덤칸[0]][랜덤칸[1]] = 2;
     그리기();
@@ -44,3 +44,77 @@ function 그리기(){
 초기화();
 랜덤생성();
 그리기();
+/*
+    screenX: 모니터 기준 좌표 
+    pageX: 페이지(스크롤 포함)
+    clientX: 브라우저 화면 기준 
+    offsetX: 이벤트 타켓 기준
+*/
+var 드래그시작 = false;
+var 드래그중 = false;
+var 시작좌표;
+var 끝좌표;
+window.addEventListener('mousedown',function(이벤트){
+    console.log('mousedown',이벤트);
+    드래그시작 = true;
+    시작좌표 = [이벤트.clientX, 이벤트.clientY];
+});
+window.addEventListener('mousemove',function(이벤트){
+    if(드래그시작){
+        드래그중 = true;
+    }
+});
+window.addEventListener('mouseup',function(이벤트){
+    끝좌표 = [이벤트.clientX, 이벤트.clientY];
+    if(드래그중){
+        var 방향;
+        var x차이 = 끝좌표[0] - 시작좌표[0];
+        var y차이 = 끝좌표[1] - 시작좌표[1];
+        if(x차이 < 0 && Math.abs(x차이)/ Math.abs(y차이) > 1){
+            방향 = '왼쪽';
+        }else if(x차이 > 0 && Math.abs(x차이)/ Math.abs(y차이) > 1 ){
+            방향 = '오른쪽';
+        }else if(x차이 > 0 && Math.abs(x차이)/ Math.abs(y차이) < 1){
+            방향 = '아래';
+        }else if(x차이 < 0 && Math.abs(x차이)/ Math.abs(y차이) < 1){
+            방향 = '위';
+        }
+        console.log(x차이,y차이,방향);
+    }
+    드래그시작 = false;
+    드래그중 = false;
+
+    switch(방향){
+        case'왼쪽':
+            break;
+        case'오른쪽':
+          break;
+        case'위':
+            var 새데이터 = [
+                [],
+                [],
+                [],
+                []
+            ];
+            데이터.forEach(function(열데이터,i){
+                열데이터.forEach(function(행데이터,j){
+                    if(행데이터){
+                        새데이터[j].push(행데이터);
+                    }
+                })
+            });
+           [1,2,3,4].forEach(function(열데이터,i){
+            [1,2,3,4].forEach(function(행데이터,j){
+                데이터[i][j] = 새데이터[i][j] || 0;
+            });
+           });
+
+
+
+            break;
+        case '아래':
+            break;
+    }
+    랜덤생성();
+
+});
